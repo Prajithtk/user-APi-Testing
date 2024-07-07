@@ -18,9 +18,9 @@ jobs:
       postgres:
         image: postgres:latest
         env:
-          POSTGRES_DB: postgres
+          POSTGRES_DB: userapitest
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: Nuhman@456
+          POSTGRES_PASSWORD: 0000
         ports:
           - 5432:5432
     steps:
