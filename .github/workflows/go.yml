@@ -1,0 +1,43 @@
+name: Go CI
+
+on:
+  push:
+    branches: 
+      - "master"
+      - "auth"
+  pull_request:
+    branches: 
+      - "master"
+      - "auth"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: Nuhman@456
+        ports:
+          - 5432:5432
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+    - name: Install dependencies
+      run: go mod download
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Run tests
+ 
+      run: go test -v ./...
