@@ -84,6 +84,9 @@ func UserSignup(c *gin.Context) {
 		return
 	}
 
+	Password, _ := bcrypt.GenerateFromPassword([]byte(user.Password), 8)
+	user.Password = string(Password)
+
 	if err := database.Db.Create(&user).Error; err != nil {
 		log.Println("Failed to create user:", err)
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create user"})

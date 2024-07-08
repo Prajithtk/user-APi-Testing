@@ -153,7 +153,7 @@ func TestSingnIn(t *testing.T) {
 		router.POST("/signin", controllers.UserLogin)
 		loginInput := model.User{
 			Email:    "user@gmail.com",
-			Password: "wrong@123",
+			Password: "wrong",
 		}
 		jsonValue, _ := json.Marshal(loginInput)
 		req, _ := http.NewRequest(http.MethodPost, "/signin", bytes.NewBuffer(jsonValue))
