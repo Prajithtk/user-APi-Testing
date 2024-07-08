@@ -46,6 +46,6 @@ jobs:
           cd user-APi-Testing
           sudo systemctl stop user-APi-Testing
           git pull
-          go run main.go
-          # Command to restart your application, e.g., systemctl restart myapp
+          go build -v ./...
+          systemctl start user-APi-Testing
         EOF
