@@ -56,6 +56,8 @@ func UserEdit(c *gin.Context) {
 		return
 	}
 	c.BindJSON(&email)
+	Password, _ := bcrypt.GenerateFromPassword([]byte(email.Password), 8)
+	email.Password = string(Password)
 
 	updates := map[string]interface{}{
 		"name":     email.Name,
