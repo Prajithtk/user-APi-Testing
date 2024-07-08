@@ -23,7 +23,7 @@ func TestEditUser(t *testing.T) {
 	t.Run("Succesfull edit", func(t *testing.T) {
 		mock.ExpectBegin()
 		mock.ExpectExec(`UPDATE "users" SET "email"=\$1,"name"=\$2,"password"=\$3,"updated_at"=\$4 WHERE id = \$5 AND "users"."deleted_at" IS NULL`).
-			WithArgs("userEdit1@gmail.com", "userEdit1", "userEdit1@123", sqlmock.AnyArg(), 11).
+			WithArgs("userEdit1@gmail.com", "userEdit1", sqlmock.AnyArg(), sqlmock.AnyArg(), 11).
 			WillReturnResult(sqlmock.NewResult(1, 1))
 		mock.ExpectCommit()
 

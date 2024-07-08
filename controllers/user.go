@@ -65,7 +65,7 @@ func UserEdit(c *gin.Context) {
 		"password": email.Password,
 	}
 	if err := database.Db.Model(&model.User{}).Where("id = ?", id).Updates(updates).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to update user"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
 
