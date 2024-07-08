@@ -47,6 +47,6 @@ jobs:
           killall user-APi-Testing
           git pull
           go build
-          go run main.go
+          go run user-APi-Testing
           exit
         EOF
