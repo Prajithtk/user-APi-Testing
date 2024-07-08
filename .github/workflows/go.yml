@@ -41,6 +41,8 @@ jobs:
         scp -o StrictHostKeyChecking=no -i key.pem -r ./* ${EC2_USER}@${EC2_HOST}:/home/${EC2_USER}/app
         ssh -o StrictHostKeyChecking=no -i key.pem ${EC2_USER}@${EC2_HOST} << 'EOF'
           cd user-APi-Testing
-          go build -v ./...
+          sudo systemctl stop user-APi-Testing
+          git pull
+          go run main.go
           # Command to restart your application, e.g., systemctl restart myapp
         EOF
