@@ -40,7 +40,7 @@ jobs:
         chmod 600 key.pem
         scp -o StrictHostKeyChecking=no -i key.pem -r ./* ${EC2_USER}@${EC2_HOST}:/home/${EC2_USER}/app
         ssh -o StrictHostKeyChecking=no -i key.pem ${EC2_USER}@${EC2_HOST} << 'EOF'
-          cd /home/${EC2_USER}/user-APi-Testing
+          cd user-APi-Testing
           go build -v ./...
           # Command to restart your application, e.g., systemctl restart myapp
         EOF
