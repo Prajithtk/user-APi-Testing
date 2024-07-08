@@ -44,8 +44,8 @@ jobs:
           export PATH=$PATH:/usr/local/go/bin
           source ~/.profile  # or ~/.bashrc or ~/.zshrc
           cd user-APi-Testing
-          sudo systemctl stop user-APi-Testing
+          killall user-APi-Testing
           git pull
-          go build -v ./...
+          go build
           systemctl start user-APi-Testing
         EOF
