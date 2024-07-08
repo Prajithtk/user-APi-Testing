@@ -47,5 +47,6 @@ jobs:
           killall user-APi-Testing
           git pull
           go build
-          systemctl start user-APi-Testing
+          nohup ./user-APi-Testing
+          exit
         EOF
