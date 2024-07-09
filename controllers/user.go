@@ -37,7 +37,7 @@ func UserShow(c *gin.Context) {
 	var user []model.User
 
 	if err := database.Db.Find(&user).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch users"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Failed to fetch users"})
 		return
 	}
 
