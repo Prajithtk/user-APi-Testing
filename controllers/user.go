@@ -24,7 +24,7 @@ func UserLogin(c *gin.Context) {
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(email.Password)); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Wrong email or password"})
+		c.JSON(http.StatusBadGateway, gin.H{"error": "Wrong email or password"})
 		return
 	}
 
