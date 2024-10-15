@@ -46,6 +46,7 @@ jobs:
           cd user-APi-Testing
           killall user-APi-Testing
           git pull
-          go run main.go
+          go build
+          nohup ./UnitUser > app.log 2>&1 
           exit
         EOF
